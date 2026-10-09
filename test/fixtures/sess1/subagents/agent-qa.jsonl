@@ -1,0 +1,2 @@
+{"timestamp":"2026-10-08T03:00:00Z","message":{"id":"q1","role":"assistant","model":"model-b","content":[{"type":"text","text":"비밀문장"}],"usage":{"input_tokens":3,"cache_creation_input_tokens":30,"cache_read_input_tokens":300,"output_tokens":3000}}}
+{"timestamp":"2026-10-08T03:00:00Z","message":{"id":"q1","role":"assistant","model":"model-b","content":[{"type":"text","text":"비밀문장"}],"usage":{"input_tokens":3,"cache_creation_input_tokens":30,"cache_read_input_tokens":300,"output_tokens":3000}}}

@@ -1,0 +1,11 @@
+{
+  "mainName": "메인 세션",
+  "agentTitle": "에이전트별",
+  "groupTitle": "팀별",
+  "mainGroup": "메인",
+  "otherGroup": "기타",
+  "groups": [
+    ["team-a-", "팀 A"],
+    ["team-b-", "팀 B"]
+  ]
+}
