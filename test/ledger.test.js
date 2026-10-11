@@ -4,12 +4,14 @@ const assert = require('node:assert');
 const fs = require('node:fs');
 const path = require('node:path');
 const { spawnSync } = require('node:child_process'); // 테스트에서만 CLI를 실제로 실행해 본다 (제품 코드는 child_process 미사용)
+// 자식 프로세스가 멈추면 테스트 전체가 몇 시간씩 남는다(2026-10-09 auto-publish 사례). 1분 넘으면 끊고 실패로 본다.
+const SPAWN_TIMEOUT_MS = 60000;
 const { aggregate, render, toKstDate } = require('../src/core');
 
 const FIX = path.join(__dirname, 'fixtures');
 const CLI = path.join(__dirname, '..', 'ledger.js');
 const TEAM_CFG = { groups: [['team-a-', '팀 A']] }; // 테스트 안에서 만든 일반 설정
-const run = (...args) => spawnSync(process.execPath, [CLI, ...args], { encoding: 'utf8' });
+const run = (...args) => spawnSync(process.execPath, [CLI, ...args], { encoding: 'utf8', timeout: SPAWN_TIMEOUT_MS });
 
 // 손 계산 (중복 제거 후): 메인 m1(출력 1000)+m2(2000), code-reviewer 3000, team-a-writer 4000, 메타 없음 5000
 
@@ -148,7 +150,7 @@ function bareTool() {
   fs.copyFileSync(path.join(TOOL, 'src', 'core.js'), path.join(d, 'src', 'core.js'));
   return d;
 }
-const runIn = (toolDir, args, opts = {}) => spawnSync(process.execPath, [path.join(toolDir, 'ledger.js'), ...args], { encoding: 'utf8', ...opts });
+const runIn = (toolDir, args, opts = {}) => spawnSync(process.execPath, [path.join(toolDir, 'ledger.js'), ...args], { encoding: 'utf8', timeout: SPAWN_TIMEOUT_MS, ...opts });
 
 test('3차 AC4: 설정 없이 실행하면 메인 세션·에이전트별 표만 나오고 그룹 표·회사 이름은 없다', () => {
   const t = bareTool();

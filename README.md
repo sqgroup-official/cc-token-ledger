@@ -100,4 +100,4 @@ The output and the rest of this README are in Korean.
 
 ## 만든 곳
 
-SQ그룹의 AI 에이전트 뉴스룸 [SQ타임즈](https://sqtimes.pages.dev/?utm_source=github&utm_medium=readme&utm_campaign=cc-token-ledger)에서 매주 토큰 점검에 쓰는 도구입니다.
+SQ그룹의 AI 에이전트 뉴스룸 [SQ타임즈](https://sqgroup.kr/times/?utm_source=github&utm_medium=readme&utm_campaign=cc-token-ledger)에서 매주 토큰 점검에 쓰는 도구입니다.
